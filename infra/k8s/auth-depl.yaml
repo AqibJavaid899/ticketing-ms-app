@@ -7,14 +7,14 @@ spec:
   selector:
     matchLabels:
       app: auth
-  templates:
+  template:
     metadata:
       labels:
         app: auth
     spec:
       containers:
         - name: auth
-          image: aqibj/auth:1.0
+          image: aqibj/auth:0.0.1
 ---
 apiVersion: v1
 kind: Service
