@@ -1,14 +1,19 @@
 import express from "express";
 import { json } from 'body-parser'
 
+import { signinRouter } from "./routes/signin";
+import { signupRouter } from "./routes/signup";
+import { signoutRouter } from "./routes/signout";
+import { currentuserRouter } from "./routes/current-user";
+
 
 const app = express();
 app.use(json());
 
-app.get('/api/users/currentuser', (req, res) => {
-    console.log("Hitting the correct URL")
-    res.json({ message: "api is working fine!" })
-})
+app.use(currentuserRouter)
+app.use(signinRouter)
+app.use(signoutRouter)
+app.use(signupRouter)
 
 const port = 3000;
 app.listen(port, () => {
