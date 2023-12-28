@@ -5,6 +5,7 @@ import { signinRouter } from "./routes/signin";
 import { signupRouter } from "./routes/signup";
 import { signoutRouter } from "./routes/signout";
 import { currentuserRouter } from "./routes/current-user";
+import { errorHandler } from "./middlewares/error-handler";
 
 
 const app = express();
@@ -14,6 +15,8 @@ app.use(currentuserRouter)
 app.use(signinRouter)
 app.use(signoutRouter)
 app.use(signupRouter)
+
+app.use(errorHandler)
 
 const port = 3000;
 app.listen(port, () => {
