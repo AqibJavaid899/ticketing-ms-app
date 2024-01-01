@@ -15,7 +15,7 @@ router.post(
       .isLength({ min: 4, max: 20 })
       .withMessage("Password must be between 4 and 20 characters"),
   ],
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     // pulling the validation error object from the request object where it was appended using validationResult()
     const errors = validationResult(req);
 
