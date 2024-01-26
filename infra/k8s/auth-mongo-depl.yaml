@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-depl
+  name: auth-mongo-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth
+      app: auth-mongo
   template:
     metadata:
       labels:
-        app: auth
+        app: auth-mongo
     spec:
       containers:
-        - name: auth
-          image: aqibj/auth:0.0.1
+        - name: auth-mongo
+          image: mongo
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-srv
+  name: auth-mongo-srv
 spec:
   type: ClusterIP
   selector:
-    app: auth
+    app: auth-mongo
   ports:
-    - name: auth
+    - name: auth-mongo
       protocol: TCP
-      port: 3333
-      targetPort: 3333
+      port: 27017
+      targetPort: 27017
